@@ -9,11 +9,12 @@
 import TinyConstraints
 
 class RootViewController: UIViewController {
+    let validityType: String.ValityType = .email
     
     lazy var textField: UITextField = {
         let tf = UITextField()
         tf.borderStyle = .roundedRect
-        tf.placeholder = "Type in your age ..."
+        tf.placeholder = "Type in your \(validityType) ..."
         tf.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return tf
     }()
@@ -45,7 +46,13 @@ class RootViewController: UIViewController {
     
     @objc fileprivate func handleTextChange() {
         guard let text = textField.text  else { return }
-        print(text)
+        if text.isValid(validityType) {
+            label.text = "Valid \(validityType)"
+        } else {
+            label.text = "Not valid \(validityType)"
+        }
     }
 }
+
+
 
