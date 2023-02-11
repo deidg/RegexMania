@@ -9,7 +9,7 @@
 import TinyConstraints
 
 class RootViewController: UIViewController {
-    let validityType: String.ValityType = .email
+    let validityType: String.ValityType = .website  // постоянно меняет эту переменную. 
     
     lazy var textField: UITextField = {
         let tf = UITextField()
